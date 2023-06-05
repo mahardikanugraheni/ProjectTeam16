@@ -1,0 +1,49 @@
+from tkinter import Tk, Label, Entry, Button
+
+def hitung_bmr():
+    berat_badan = float(input_berat.get())
+    tinggi_badan = float(input_tinggi.get())
+    umur = int(input_umur.get())
+    gender = input_gender.get()
+
+    if gender == "Pria":
+        bmr = 66 + (13.75 * berat_badan) + (5 * tinggi_badan) - (6.75 * umur)
+    else:
+        bmr = 655 + (9.56 * berat_badan) + (1.85 * tinggi_badan) - (4.68 * umur)
+
+    hasil_bmr.config(text=f"BMR Anda: {bmr:.2f} kalori")
+
+root = Tk()
+root.title("Kalkulator BMR")
+
+label_berat = Label(root, text="Berat Badan (kg):")
+label_berat.pack()
+
+input_berat = Entry(root)
+input_berat.pack()
+
+label_tinggi = Label(root, text="Tinggi Badan (cm):")
+label_tinggi.pack()
+
+input_tinggi = Entry(root)
+input_tinggi.pack()
+
+label_umur = Label(root, text="Umur:")
+label_umur.pack()
+
+input_umur = Entry(root)
+input_umur.pack()
+
+label_gender = Label(root, text="Jenis Kelamin:")
+label_gender.pack()
+
+input_gender = Entry(root)
+input_gender.pack()
+
+tombol_hitung = Button(root, text="Hitung BMR", command=hitung_bmr)
+tombol_hitung.pack()
+
+hasil_bmr = Label(root, text="")
+hasil_bmr.pack()
+
+root.mainloop()
