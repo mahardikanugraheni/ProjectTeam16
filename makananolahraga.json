@@ -1,0 +1,79 @@
+{
+    "OverWeight":
+    [
+    {"jenis olahraga": "Aerobik tingkat tinggi"
+    ,"durasi olahraga" :"1 Jam",
+    "kalori yang dibakar": "800 kalori"},
+    {"jenis olahraga": "Gym",
+    "durasi olahraga": "1 Jam",
+    "kalori yang dibakar": " 900 Kalori"},
+    {"jenis olahraga": "Zumba",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": "600 kalori"},
+    {"jenis olahraga": "Skipping",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": "800 kalori"},
+    {"jenis olahraga": "Renang",
+    "durasi olahraga": "1 jam",
+    "kalori yang dibakar": "700 kalori"},
+    {"jenis olahraga": "Bersepeda",
+    "durasi olahraga":"1 jam",
+    "kalori yang dibakar": "700 kalori"},
+    
+    {
+    "Normal":
+    [
+    {"jenis olahraga": "Jalan kaki"
+    ,"durasi olahraga" :"1 Jam",
+    "kalori yang dibakar":"300 kalori"},
+    {"jenis olahraga": "Tenis",
+    "durasi olahraga": "1 Jam",
+    "kalori yang dibakar": "400 Kalori"},
+    {"jenis olahraga": "Skip Rope",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": " 400 kalori"},
+    {"jenis olahraga": "Basket",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": "400 kalori"},
+    {"jenis olahraga": "Futsal",
+    "durasi olahraga": "1 jam",
+    "kalori yang dibakar": "400 kalori"},
+    {"jenis olahraga": "Badminton",
+    "durasi olahraga":"1 jam",
+    "kalori yang dibakar": "400 kalori"},
+        
+    "Underweight":
+    [
+    {"jenis olahraga": "Angkat Beban"
+    ,"durasi olahraga" :"1 Jam",
+    "kalori yang dibakar":"100 kalori"},
+    {"jenis olahraga": "Pilates",
+    "durasi olahraga": "1 Jam",
+    "kalori yang dibakar": "200 Kalori"},
+    {"jenis olahraga": "Yoga",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": " 200 kalori"},
+    {"jenis olahraga": "Kardiovaskular Ringan",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": "100 kalori"},
+    {"jenis olahraga": "HighiIntensity Interval Training",
+    "durasi olahraga": "1 jam",
+    "kalori yang dibakar": "200 kalori"},
+
+    "Obesity":
+    [
+    {"jenis olahraga": "Jogging"
+    ,"durasi olahraga" :"1 Jam",
+    "kalori yang dibakar":"800 kalori"},
+    {"jenis olahraga": "Bersepeda",
+    "durasi olahraga": "1 Jam",
+    "kalori yang dibakar": "800 Kalori"},
+    {"jenis olahraga": "Renang",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": " 800 kalori"},
+    {"jenis olahraga": "Aerobik",
+    "durasi olahraga" : "1 jam",
+    "kalori yang dibakar": " 600 kalori"},
+    {"jenis olahraga": "Lompat tali",
+    "durasi olahraga": "1 jam",
+    "kalori yang dibakar": "800 Kalori"},
