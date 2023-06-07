@@ -18,9 +18,8 @@
     "kalori yang dibakar": "700 kalori"},
     {"jenis olahraga": "Bersepeda",
     "durasi olahraga":"1 jam",
-    "kalori yang dibakar": "700 kalori"},
-    
-    {
+    "kalori yang dibakar": "700 kalori"}
+    ],
     "Normal":
     [
     {"jenis olahraga": "Jalan kaki"
@@ -40,8 +39,8 @@
     "kalori yang dibakar": "400 kalori"},
     {"jenis olahraga": "Badminton",
     "durasi olahraga":"1 jam",
-    "kalori yang dibakar": "400 kalori"},
-        
+    "kalori yang dibakar": "400 kalori"}
+    ],
     "Underweight":
     [
     {"jenis olahraga": "Angkat Beban"
@@ -58,8 +57,8 @@
     "kalori yang dibakar": "100 kalori"},
     {"jenis olahraga": "HighiIntensity Interval Training",
     "durasi olahraga": "1 jam",
-    "kalori yang dibakar": "200 kalori"},
-
+    "kalori yang dibakar": "200 kalori"}
+    ],
     "Obesity":
     [
     {"jenis olahraga": "Jogging"
@@ -76,4 +75,5 @@
     "kalori yang dibakar": " 600 kalori"},
     {"jenis olahraga": "Lompat tali",
     "durasi olahraga": "1 jam",
-    "kalori yang dibakar": "800 Kalori"},
+    "kalori yang dibakar": "800 Kalori"}
+    ]}

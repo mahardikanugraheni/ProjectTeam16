@@ -34,10 +34,10 @@
     {"makanan": "donat",
     "kalori": "500 kalori"},
     {"makanan": "kue",
-    "kalori": "500 kalori"},}
-    
-{ "Normal":
-[
+    "kalori": "500 kalori"}
+    ],  
+    "Normal":
+    [
     {"makanan": "Nasi Putih",
     "kalori": "150 kalori"},
     {"makanan": "Roti Gandum",
@@ -55,9 +55,10 @@
     {"makanan": "Sayuran Hijau",
     "kalori": "40 kalori"},
     {"makanan": "Buah-buahan",
-    "kalori": "60 kalori"},}
+    "kalori": "60 kalori"}
+    ],
     
-{ "Over Weight":
+    "Over Weight":
     [
         {"makanan": "Telur Rebus",
         "kalori": "78 kalori"},
@@ -76,7 +77,7 @@
         {"makanan": "kale",
         "kalori": "7 kalori"},
         {"makanan": "selada",
-        "kalori": "7 kalori"},}
+        "kalori": "7 kalori"},
         {"makanan": "brokoli",
         "kalori": "7 kalori"},
         {"makanan": "kubis",
@@ -94,10 +95,10 @@
         {"makanan": "Yogurt",
         "kalori": "100 kalori"},
         {"makanan": "Telur Rebus",
-        "kalori": "78 kalori"},}
-
-{ "Obesity":
-[
+        "kalori": "78 kalori"}
+    ],
+    "Obesity":
+    [
     {"makanan": "Bayam",
     "kalori": "7 kalori"},
     {"makanan": "Kale",
@@ -141,5 +142,6 @@
     {"makanan": "Paprika",
     "kalori": "22 kalori"},
     {"makanan": "Tomat",
-    "kalori": "22 kalori"},}
-
+    "kalori": "22 kalori"}
+    ]
+}
