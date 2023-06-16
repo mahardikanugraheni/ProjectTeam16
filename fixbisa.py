@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import csv
-import json
+
 
 window = Tk()
 window.title("BMI Calculator")
@@ -37,16 +37,6 @@ resize = bg5.resize((1300,650),Image.LANCZOS)
 converted5= ImageTk.PhotoImage(resize)
 page_check=0
 
-# #path database csv
-# database = 'database.csv'
-
-# # Baca database 
-# data = pd.read_csv(database)
-
-# # Masukin ke variabel
-# username = data['Username']
-# password = data['Password']
-
 def awal():
     global frame1,page_check
     if page_check == 0:
@@ -60,10 +50,10 @@ def awal():
     frame1.pack(ipadx=1300,ipady=650)
     a= tk.Label(frame1,image=converted1,border=0)
     a.pack(fill=tk.BOTH,expand=tk.YES)
-    button1 = tk.Button(a,text="Sign Up", bg='#fabb17',fg='white',border=0,command=halaman_Signup)
-    button1.pack(expand=True,ipadx=30,ipady=10,padx=200,pady=150,anchor='s',side='right')
-    button2 = tk.Button(a,text="Log In", bg='#fabb17',fg='white',border=0,command=halaman_SignIn)
-    button2.pack(expand=True,ipadx=30,ipady=10,padx=200,pady=150,anchor='s',side='left')
+    button1 = tk.Button(a,text="Sign Up", bg='#fabb17',fg='white',border=0,font=('Arial',18),command=halaman_Signup)
+    button1.place(x=495,y=450,relwidth=0.1)
+    button2 = tk.Button(a,text="Log In", bg='#fabb17',fg='white',border=0,font=('Arial',18),command=halaman_SignIn)
+    button2.place(x=650,y=450,relwidth=0.1)
 
 def signin():
     username=username_entry.get()
@@ -73,11 +63,11 @@ def signin():
         csv_reader=csv.reader(file)
         for row in csv_reader:
             if row[1]==username and row[2]==password:
-                messagebox.showinfo('sign in','sukses')
+                messagebox.showinfo('sign in','Log In Berhasil')
                 next_button = tk.Button(bglogin,text='Next', command=halaman_awal,bg='#fabb17',fg='white',border=0,font=('Arial',14))
                 next_button.place(x=885,y=430,relwidth=0.1)
                 return
-        messagebox.showerror('invalid','gagal')
+        messagebox.showerror('invalid','Username atau Password Salah')
 
 
 def halaman_SignIn():
@@ -118,7 +108,7 @@ def halaman_Signup():
             with open('database.csv','a',newline='')as file:
                 csv_writer=csv.writer(file)
                 csv_writer.writerow([name,username,password])
-                messagebox.showinfo('Sign Up','sukses')
+                messagebox.showinfo('Sign Up','Sign Up Berhasil')
     name_label = Label(bgsignup,text="Nama", fg="#94221e", bg="#f3e1d1",font=('Arial',18,'bold'))
     name_label.place(x=910,y=220)
     name_entry = tk.Entry(bgsignup)
@@ -151,24 +141,60 @@ def halaman_awal():
     button2.place(x=680,y=350)
 
 def bmi_index(bmi):
-    with open("makanan_bmi.csv",'r') as file:
-        csv_reader = csv.reader(file)
-        data=list(csv_reader)
-
-        message = ''
-        for row in data:
-            message += ':'.join(row) + "\n"
-
     if bmi < 18.5:
-        messagebox.showinfo(f'BMI = {bmi} is Underweight',message)
-    elif (bmi>18.5) and (bmi<24.9):
-        messagebox.showinfo(f'BMI = {bmi} is Normal')
-    elif (bmi>24.9) and (bmi <29.9):
-        messagebox.showinfo(f'BMI ={bmi:.2f} is Overweight')
-    else:
-        messagebox.showinfo(f'BMI = {bmi} is Obesity')
+        with open("olahraga_bmi.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
 
-def reset_entry():
+            selected_data = [ ]
+            for row in data:
+                selected_data.append((row[0],row[1],row[2]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMI = {bmi} is Underweight',message)
+            
+    elif (bmi>18.5) and (bmi<24.9):
+        with open("olahraga_bmi.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
+
+            selected_data = [ ]
+            for row in data:
+                selected_data.append((row[3],row[4],row[5]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMI = {bmi} is Normal',message)
+        
+    elif (bmi>24.9) and (bmi <29.9):
+        with open("olahraga_bmi.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
+
+            selected_data = [ ]
+            for row in data:
+                selected_data.append((row[6],row[7],row[8]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMI = {bmi} is Overweight',message)
+  
+    else:
+        with open("olahraga_bmi.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
+
+            selected_data = [ ]
+            for row in data:
+                selected_data.append((row[9],row[10],row[11]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMI = {bmi} is Obesity',message)
+ 
+   
+def reset_entry1():
     age_ent.delete(0,'end')
     height.delete(0,'end')
     weight.delete(0,'end')
@@ -190,45 +216,33 @@ def open_bmi():
     frame5.pack(expand=True,ipadx=1920,ipady=1080)
     bgkalku= tk.Label(frame5,image=converted5,border=0)
     bgkalku.pack(fill=tk.BOTH,expand=tk.YES)
-    age_lb=Label(bgkalku,text='Enter Age',font=('Arial',18),fg="#94221e",bg="#f3e1d1")
+    age_lb=Label(bgkalku,text='Umur',font=('Arial',16),fg="#94221e",bg="#f3e1d1")
     age_lb.place(x=495,y=120)
     age_ent=Entry(bgkalku)
-    age_ent.place(x=620,y=125)
-    gen_lb=Label(bgkalku,text='Select Gender',fg="#94221e",bg="#f3e1d1",font=('Arial',18))
+    age_ent.place(x=695,y=125)
+    gen_lb=Label(bgkalku,text='Pilih Jenis Kelamin',fg="#94221e",bg="#f3e1d1",font=('Arial',14))
     gen_lb.place(x=495,y=180)
-    male_rb=Radiobutton(bgkalku,text='Male',variable=var,value=1,fg="#94221e",bg="#f3e1d1",font=('Arial',14))
+    male_rb=Radiobutton(bgkalku,text='Pria',variable=var,value=1,fg="#94221e",bg="#f3e1d1",font=('Arial',14))
     male_rb.place(x=665,y=182)
-    female_rb=Radiobutton(bgkalku,text='Female',variable=var,value=2,fg="#94221e",bg="#f3e1d1",font=('Arial',14))
+    female_rb=Radiobutton(bgkalku,text='Wanita',variable=var,value=2,fg="#94221e",bg="#f3e1d1",font=('Arial',14))
     female_rb.place(x=753,y=182)
-    height_lb=Label(bgkalku,text='Enter Height (cm)',bg="#f3e1d1",fg="#94221e",font=('Arial',18))
+    height_lb=Label(bgkalku,text='Tinggi Badan (cm)',bg="#f3e1d1",fg="#94221e",font=('Arial',16))
     height_lb.place(x=495,y=237)
-    weight_lb=Label(bgkalku,text='Enter Weight (kg)',bg="#f3e1d1",fg="#94221e",font=('Arial',18))
+    weight_lb=Label(bgkalku,text='Berat Badan (kg)',bg="#f3e1d1",fg="#94221e",font=('Arial',16))
     weight_lb.place(x=495,y=292)
     height=Entry(bgkalku)
-    height.place(x=665,y=237)
+    height.place(x=695,y=245)
     weight=Entry(bgkalku)
-    weight.place(x=665,y=292)
-    cal_btn=Button(bgkalku,text='Calculate',command=calculate_bmi)
-    cal_btn.place(x=665,y=380)
-    reset_btn=Button(bgkalku,text='Reset',command=reset_entry)
-    reset_btn.place(x=750,y=380)
-    next_btn=Button(bgkalku,text='Next',command=halaman_tabel)
-    next_btn.place(x=780,y=380)
+    weight.place(x=695,y=300)
+    cal_btn=Button(bgkalku,text='Calculate',command=calculate_bmi,bg="#fabb17",border=1,fg='white',font=('Arial',14))
+    cal_btn.place(x=499,y=380,relwidth=0.07)
+    reset_btn=Button(bgkalku,text='Reset',command=reset_entry1,bg="#fabb17",border=1,fg='white',font=('Arial',14))
+    reset_btn.place(x=600,y=380,relwidth=0.07)
+    back_btn=Button(bgkalku,text='Back',bg="#fabb17",border=1,fg='white',font=('Arial',14),command=halaman_awal)
+    back_btn.place(x=699,y=380,relwidth=0.07)
 
-def halaman_tabel():
-    global frame7
-    frame5.pack_forget()
-    page_check=7
-    frame7=tk.Label(window)
-    frame7.pack(expand=True,ipadx=600,ipady=400)
-    tabel=ttk.Treeview(frame7,columns=("Status BMI","Nama Makanan","Kalori"),show='headings')
-    tabel.pack()
-
-        
+     
 def hitung_bmr():
-    myjsonfile=open('makanan.json','r')
-    jsondata=myjsonfile.read()
-    obj=json.loads(jsondata)
     berat_badan = float(input_berat.get())
     tinggi_badan = float(input_tinggi.get())
     umur = int(input_umur.get())
@@ -236,11 +250,37 @@ def hitung_bmr():
 
     if gender == "Pria":
         bmr = 66 + (13.75 * berat_badan) + (5 * tinggi_badan) - (6.75 * umur)
+        with open("makanan_bmr.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
+
+            selected_data = []
+            for row in data:
+                selected_data.append((row[0],row[1]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMR kamu adalah {bmr:.2f}',message)
     else:
         bmr = 655 + (9.56 * berat_badan) + (1.85 * tinggi_badan) - (4.68 * umur)
+        with open("makanan_bmr.csv",'r') as file:
+            csv_reader = csv.reader(file)
+            data=list(csv_reader)
 
-    hasil_bmr.config(text=f"BMR Anda: {bmr:.2f} kalori,{str(obj['Underweight'])}") 
+            selected_data = []
+            for row in data:
+                selected_data.append((row[2],row[3]))
+            message = ''
+            for row in selected_data:
+                message += ':'.join(row) + "\n"
+            messagebox.showinfo(f'BMR kamu adalah {bmr:.2f}',message)
 
+def reset_entry():
+    input_berat.delete(0,'end')
+    input_tinggi.delete(0,'end')
+    input_umur.delete(0,'end')
+    input_gender.delete(0,'end')
+    var = IntVar()
 
 def open_bmr():
     global frame6,page_check,input_berat,input_tinggi, input_umur,input_gender,hasil_bmr
@@ -250,40 +290,27 @@ def open_bmr():
     frame6.pack(expand=True,ipadx=600,ipady=400)
     bgkalku2= tk.Label(frame6,image=converted5,border=0)
     bgkalku2.pack(fill=tk.BOTH,expand=tk.YES)
-    label_berat=Label(bgkalku2,text='Berat Badan (kg):')
-    label_berat.pack()
+    label_berat=Label(bgkalku2,text='Berat Badan (kg)',bg='#f3e1d1',fg='#94221e',font=('Arial',18))
+    label_berat.place(x=495,y=120)
     input_berat=Entry(bgkalku2)
-    input_berat.pack()
-    
-
-    label_tinggi = Label(bgkalku2, text="Tinggi Badan (cm):")
-    label_tinggi.pack()
-
+    input_berat.place(x=710,y=125)
+    label_tinggi = Label(bgkalku2, text="Tinggi Badan (cm)",bg='#f3e1d1',fg='#94221e',font=('Arial',18))
+    label_tinggi.place(x=495,y=180)
     input_tinggi = Entry(bgkalku2)
-    input_tinggi.pack()
-
-    label_umur = Label(bgkalku2, text="Umur:")
-    label_umur.pack()
-
+    input_tinggi.place(x=710,y=184)
+    label_umur = Label(bgkalku2, text="Umur",bg='#f3e1d1',fg='#94221e',font=('Arial',18))
+    label_umur.place(x=495,y=237)
     input_umur = Entry(bgkalku2)
-    input_umur.pack()
-
-    label_gender = Label(bgkalku2, text="Jenis Kelamin:")
-    label_gender.pack()
-
+    input_umur.place(x=710,y=245)
+    label_gender = Label(bgkalku2, text="Jenis Kelamin",bg='#f3e1d1',fg='#94221e',font=('Arial',18))
+    label_gender.place(x=495,y=292)
     input_gender = Entry(bgkalku2)
-    input_gender.pack()
+    input_gender.place(x=710,y=300)
+    tombol_hitung = Button(bgkalku2, text="Hitung BMR", command=hitung_bmr,fg='white',bg='#fabb17',font=('Arial',14))
+    tombol_hitung.place(x=690,y=380)    
+    reset_btn=Button(bgkalku2,text='Reset',command=reset_entry,bg="#fabb17",border=1,fg='white',font=('Arial',14))
+    reset_btn.place(x=495,y=380)
 
-    tombol_hitung = Button(bgkalku2, text="Hitung BMR", command=hitung_bmr)
-    tombol_hitung.pack()
-
-    hasil_bmr = Label(bgkalku2)
-    hasil_bmr.pack()
-    def tabel():
-        table=ttk.Treeview(bgkalku2,columns=('makanan','kalori'),show="headings")
-        table.pack()
-    coba_btn=Button(bgkalku2,text='tabel',command=tabel)
-    coba_btn.pack(side=RIGHT)
     
 awal()
 window.mainloop()
